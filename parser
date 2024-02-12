@@ -1,0 +1,21 @@
+import requests
+from bs4 import BeautifulSoup
+import lxml
+import fake_useragent
+
+
+session = requests.session()
+link = "https://rusdate.net/login"
+user = fake_useragent.UserAgent().random
+header = {'username' : user}
+
+dict = {
+    'username': '5352076769',
+    'password': 'Ulyk04()'
+}
+response = session.post(link , data=dict ,headers=header).text
+
+profil = "https://rusdate.net/u/ru6148364"
+profil_info = session.get(profil , headers=header).text
+
+print(profil_info)
